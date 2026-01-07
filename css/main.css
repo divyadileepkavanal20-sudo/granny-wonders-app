@@ -249,3 +249,7 @@ body.manual-mode .manual-only {
     font-size: 16px;
   }
 }
+
+.modal.hidden {
+  display: none;
+}

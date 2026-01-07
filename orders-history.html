@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Order History | Granny Wonders</title>
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
+<script src="js/navbar.js"></script>
 
 <div class="container">
   <h2>Order History</h2>
@@ -31,24 +32,24 @@
   </div>
 </div>
 
-<!-- EDIT MODAL -->
-<div id="editModal" class="modal" style="display:none;">
+<!-- ================= EDIT ORDER MODAL ================= -->
+<!-- <div id="editModal" class="modal hidden">
   <div class="modal-card">
     <h3>Edit Order</h3>
 
     <label>Quantity</label>
-    <input id="editQty" type="number" min="1">
+    <input id="editQty" type="number" min="1" />
 
     <label>Delivery Cost (₹)</label>
-    <input id="editDelivery" type="number" min="0">
+    <input id="editDelivery" type="number" min="0" />
 
-    <div class="action-bar">
+    <div class="modal-actions">
       <button class="primary" onclick="saveEdit()">Save</button>
-      <button class="secondary" onclick="closeModal()">Cancel</button>
+      <button onclick="closeModal()">Cancel</button>
     </div>
   </div>
-</div>
-<script src="js/navbar.js"></script>
+</div> -->
+
 <script src="js/ordersHistory.js"></script>
 </body>
 </html>

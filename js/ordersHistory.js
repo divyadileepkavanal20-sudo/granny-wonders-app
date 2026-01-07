@@ -12,7 +12,7 @@ function render() {
 
   if (!orders.length) {
     table.innerHTML =
-      "<tr><td colspan='8'>No orders yet</td></tr>";
+      "<tr><td colspan='8' class='small'>No orders yet</td></tr>";
     return;
   }
 
@@ -30,8 +30,8 @@ function render() {
         ₹${o.profit.toFixed(2)}
       </td>
       <td>
-        <button class="secondary" onclick="editOrder(${index})">Edit</button>
-        <button class="secondary" onclick="deleteOrder(${index})">Delete</button>
+      
+        <button class="danger" onclick="deleteOrder(${index})">Delete</button>
       </td>
     `;
 
@@ -59,11 +59,13 @@ function editOrder(index) {
   document.getElementById("editDelivery").value =
     order.deliveryCost || 0;
 
-  document.getElementById("editModal").style.display = "flex";
+  // ✅ OPEN MODAL (correct way)
+  document.getElementById("editModal").classList.remove("hidden");
 }
 
 function closeModal() {
-  document.getElementById("editModal").style.display = "none";
+  // ✅ CLOSE MODAL (correct way)
+  document.getElementById("editModal").classList.add("hidden");
   editIndex = null;
 }
 
@@ -78,7 +80,7 @@ function saveEdit() {
 
   const order = orders[editIndex];
 
-  // 🔁 RECALCULATE (important)
+  /* 🔁 RECALCULATE SAFELY */
   const pricePerUnit = order.revenue / order.quantity;
   const costPerUnit = order.cost / order.quantity;
 
@@ -90,7 +92,6 @@ function saveEdit() {
     order.revenue - order.cost - order.deliveryCost;
 
   orders[editIndex] = order;
-
   localStorage.setItem("orders", JSON.stringify(orders));
 
   closeModal();
