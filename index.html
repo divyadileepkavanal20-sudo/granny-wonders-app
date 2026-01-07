@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Granny Wonders | Login</title>
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="center">
-  <div class="card">
-    <h2>Owner Login</h2>
+<body class="login-page">
+
+  <div class="login-card">
+    <h1>Granny Wonders</h1>
+    <p class="login-subtitle">Owner Login</p>
+
     <input id="email" placeholder="Email">
     <input id="password" type="password" placeholder="Password">
-    <button onclick="login()">Login</button>
+
+    <button class="primary" onclick="login()">Login</button>
+
+    <p class="login-hint">
+      This app is for internal business use only
+    </p>
   </div>
+
   <script src="js/auth.js"></script>
 </body>
 </html>
