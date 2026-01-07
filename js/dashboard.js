@@ -1,5 +1,7 @@
 const orders = JSON.parse(localStorage.getItem("orders")) || [];
+const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
+/* ================= DOM ================= */
 const todayOrdersEl = document.getElementById("todayOrders");
 const todayRevenueEl = document.getElementById("todayRevenue");
 const todayProfitEl = document.getElementById("todayProfit");
@@ -14,8 +16,9 @@ const yearOrdersEl = document.getElementById("yearOrders");
 const yearProfitEl = document.getElementById("yearProfit");
 
 const alertsEl = document.getElementById("alertsList");
-const healthEl = document.getElementById("healthStatus");
+const healthStatusEl = document.getElementById("healthStatus");
 
+/* ================= DATE HELPERS ================= */
 const now = new Date();
 const today = now.toISOString().split("T")[0];
 const currentMonth = now.getMonth();
@@ -29,76 +32,99 @@ function isThisWeek(dateStr) {
   return d >= start;
 }
 
-let totals = {
-  todayOrders: 0,
-  todayRevenue: 0,
-  todayProfit: 0,
-  weekOrders: 0,
-  weekProfit: 0,
-  monthOrders: 0,
-  monthProfit: 0,
-  yearOrders: 0,
-  yearProfit: 0
-};
+/* ================= TOTALS ================= */
+let todayOrders = 0,
+  todayRevenue = 0,
+  todayProfit = 0;
 
+let weekOrders = 0,
+  weekProfit = 0;
+
+let monthOrders = 0,
+  monthProfit = 0;
+
+let yearOrders = 0,
+  yearProfit = 0;
+
+/* ================= PROCESS ORDERS ================= */
 orders.forEach(o => {
   const d = new Date(o.date);
 
+  // TODAY
   if (o.date === today) {
-    totals.todayOrders++;
-    totals.todayRevenue += o.revenue;
-    totals.todayProfit += o.profit;
+    todayOrders++;
+    todayRevenue += o.revenue;
+    todayProfit += o.profit;
   }
 
+  // WEEK
   if (isThisWeek(o.date)) {
-    totals.weekOrders++;
-    totals.weekProfit += o.profit;
+    weekOrders++;
+    weekProfit += o.profit;
   }
 
+  // MONTH
   if (d.getMonth() === currentMonth && d.getFullYear() === currentYear) {
-    totals.monthOrders++;
-    totals.monthProfit += o.profit;
+    monthOrders++;
+    monthProfit += o.profit;
   }
 
+  // YEAR
   if (d.getFullYear() === currentYear) {
-    totals.yearOrders++;
-    totals.yearProfit += o.profit;
-  }
-
-  if (o.profit < 0) {
-    addAlert(`❌ Loss-making order: ${o.product} (${o.size})`);
+    yearOrders++;
+    yearProfit += o.profit;
   }
 });
 
-todayOrdersEl.innerText = totals.todayOrders;
-todayRevenueEl.innerText = "₹" + totals.todayRevenue.toFixed(2);
-todayProfitEl.innerText = "₹" + totals.todayProfit.toFixed(2);
+/* ================= SUBTRACT MONTH/YEAR EXPENSES ================= */
+const monthExpenses = expenses
+  .filter(e => e.date.startsWith(`${currentYear}-${String(currentMonth + 1).padStart(2, "0")}`))
+  .reduce((sum, e) => sum + e.amount, 0);
 
-weekOrdersEl.innerText = totals.weekOrders;
-weekProfitEl.innerText = "₹" + totals.weekProfit.toFixed(2);
+const yearExpenses = expenses
+  .filter(e => e.date.startsWith(String(currentYear)))
+  .reduce((sum, e) => sum + e.amount, 0);
 
-monthOrdersEl.innerText = totals.monthOrders;
-monthProfitEl.innerText = "₹" + totals.monthProfit.toFixed(2);
+monthProfit -= monthExpenses;
+yearProfit -= yearExpenses;
 
-yearOrdersEl.innerText = totals.yearOrders;
-yearProfitEl.innerText = "₹" + totals.yearProfit.toFixed(2);
+/* ================= RENDER ================= */
+todayOrdersEl.innerText = todayOrders;
+todayRevenueEl.innerText = "₹" + todayRevenue.toFixed(2);
+setProfit(todayProfitEl, todayProfit);
 
-// ================= BUSINESS HEALTH =================
-if (totals.monthProfit > 0) {
-  healthEl.innerText = "✅ Business is healthy and profitable";
-  healthEl.style.color = "green";
+weekOrdersEl.innerText = weekOrders;
+setProfit(weekProfitEl, weekProfit);
+
+monthOrdersEl.innerText = monthOrders;
+setProfit(monthProfitEl, monthProfit);
+
+yearOrdersEl.innerText = yearOrders;
+setProfit(yearProfitEl, yearProfit);
+
+/* ================= HEALTH & ALERTS ================= */
+alertsEl.innerHTML = "";
+
+if (monthProfit < 0) {
+  addAlert("❌ Business is running at a loss. Review pricing & expenses.");
+  healthStatusEl.innerText = "Business health: ❌ Loss";
+  healthStatusEl.style.color = "var(--danger)";
 } else {
-  healthEl.innerText = "⚠️ Business needs attention";
-  healthEl.style.color = "orange";
+  addAlert("✅ Business is healthy. Expenses accounted correctly.");
+  healthStatusEl.innerText = "Business health: ✅ Healthy";
+  healthStatusEl.style.color = "var(--primary)";
 }
 
-// ================= AI ADVICE =================
-if (typeof getAIAdvice === "function") {
-  getAIAdvice().forEach(msg => addAlert(msg));
-}
+/* ================= HELPERS ================= */
+function setProfit(el, value) {
+  el.innerText = "₹" + value.toFixed(2);
+  el.classList.remove("profit-positive", "profit-negative");
 
-if (!alertsEl.children.length) {
-  addAlert("✅ No critical alerts");
+  if (value < 0) {
+    el.classList.add("profit-negative");
+  } else {
+    el.classList.add("profit-positive");
+  }
 }
 
 function addAlert(text) {
@@ -106,4 +132,3 @@ function addAlert(text) {
   li.innerText = text;
   alertsEl.appendChild(li);
 }
-

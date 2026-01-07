@@ -1,73 +1,44 @@
 const orders = JSON.parse(localStorage.getItem("orders")) || [];
+const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 const withdrawals = JSON.parse(localStorage.getItem("withdrawals")) || [];
 const employees = JSON.parse(localStorage.getItem("employees")) || [];
 
-/* ================= DOM ================= */
-const totalProfitEl = document.getElementById("totalProfit");
-const withdrawnEl = document.getElementById("withdrawn");
-const pendingPaymentsEl = document.getElementById("pendingPayments");
-const safeAmountEl = document.getElementById("safeAmount");
-const withdrawAmountEl = document.getElementById("withdrawAmount");
-const statusEl = document.getElementById("withdrawStatus");
+/* ================= DATE ================= */
+const now = new Date();
+const currentMonth =
+  now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0");
 
 /* ================= CALCULATIONS ================= */
 
-// Total profit from all orders
-const totalProfit = orders.reduce((sum, o) => sum + (o.profit || 0), 0);
+// Order profit (month)
+const orderProfit = orders
+  .filter(o => o.date.startsWith(currentMonth))
+  .reduce((sum, o) => sum + o.profit, 0);
 
-// Total already withdrawn
-const totalWithdrawn = withdrawals.reduce(
-  (sum, w) => sum + (w.amount || 0),
-  0
-);
+// Expenses (month)
+const expenseTotal = expenses
+  .filter(e => e.date.startsWith(currentMonth))
+  .reduce((sum, e) => sum + e.amount, 0);
 
-// Pending employee payments
-const pendingEmployeePayments = employees.reduce(
+// Employee payments (month)
+const employeePayable = employees.reduce(
   (sum, e) => sum + (e.pending || 0),
   0
 );
 
-// Safety buffer (30%)
-const safetyBuffer = totalProfit * 0.3;
+// Withdrawals
+const withdrawn = withdrawals.reduce((sum, w) => sum + w.amount, 0);
 
-// Safe withdrawable amount
-let safeWithdrawable =
-  totalProfit - totalWithdrawn - pendingEmployeePayments - safetyBuffer;
+// Net profit
+const netProfit = orderProfit - expenseTotal - employeePayable;
 
-if (safeWithdrawable < 0) safeWithdrawable = 0;
+// Safety buffer (10%)
+const safeAmount = netProfit * 0.9;
 
-/* ================= RENDER ================= */
-totalProfitEl.innerText = "₹" + totalProfit.toFixed(2);
-withdrawnEl.innerText = "₹" + totalWithdrawn.toFixed(2);
-pendingPaymentsEl.innerText =
-  "₹" + pendingEmployeePayments.toFixed(2);
-safeAmountEl.innerText =
-  "₹" + safeWithdrawable.toFixed(2);
-
-/* ================= ACTION ================= */
-function withdrawProfit() {
-  const amount = +withdrawAmountEl.value || 0;
-
-  if (!amount) {
-    statusEl.innerText = "Enter withdrawal amount";
-    statusEl.style.color = "orange";
-    return;
-  }
-
-  if (amount > safeWithdrawable) {
-    statusEl.innerText =
-      "⚠️ Unsafe withdrawal. This may impact business stability.";
-    statusEl.style.color = "red";
-    return;
-  }
-
-  withdrawals.push({
-    date: new Date().toISOString().split("T")[0],
-    amount
-  });
-
-  localStorage.setItem("withdrawals", JSON.stringify(withdrawals));
-
-  alert("✅ Withdrawal recorded safely");
-  location.reload();
-}
+/* ================= DOM ================= */
+document.getElementById("totalProfit").innerText = "₹" + netProfit.toFixed(2);
+document.getElementById("withdrawn").innerText = "₹" + withdrawn.toFixed(2);
+document.getElementById("pendingPayments").innerText =
+  "₹" + employeePayable.toFixed(2);
+document.getElementById("safeAmount").innerText =
+  safeAmount > 0 ? "₹" + safeAmount.toFixed(2) : "₹0";

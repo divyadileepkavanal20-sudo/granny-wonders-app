@@ -5,10 +5,12 @@
   <title>Dashboard | Granny Wonders</title>
   <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body onload="requireAuth()">
 
+<!-- ================= NAVBAR ================= -->
 <nav class="nav">
-  <a class="active" href="#">Dashboard</a>
+  <a class="active" href="dashboard.html">Dashboard</a>
   <a href="product-create.html">Add Product</a>
   <a href="products-list.html">Products</a>
   <a href="orders.html">Orders</a>
@@ -17,50 +19,63 @@
   <a href="employees.html">Employees</a>
   <a href="owner-profit.html">Business Profit</a>
   <a href="expenses.html">Expenses</a>
-   <a href="how-to-use.html">How To Use</a>
+  <a href="how-to-use.html">How To Use</a>
 </nav>
 
+<!-- ================= MAIN ================= -->
 <div class="container">
 
+  <!-- HEADER -->
   <div class="dashboard-header">
     <h1>Dashboard</h1>
-    <p id="healthStatus" class="small">Business health overview</p>
+    <p id="healthStatus" class="small">
+      Business health overview
+    </p>
   </div>
 
+  <!-- KPI GRID -->
   <div class="grid-2">
 
+    <!-- TODAY -->
     <div class="card kpi">
       <h3>Today</h3>
       <p>Orders <strong id="todayOrders">0</strong></p>
       <p>Revenue <strong id="todayRevenue">₹0</strong></p>
-      <p class="profit-main">Profit <strong id="todayProfit">₹0</strong></p>
+      <p class="profit-main">
+        Profit <strong id="todayProfit">₹0</strong>
+      </p>
     </div>
 
+    <!-- WEEK -->
     <div class="card kpi">
       <h3>This Week</h3>
       <p>Orders <strong id="weekOrders">0</strong></p>
-      <p class="profit-main">Profit <strong id="weekProfit">₹0</strong></p>
+      <p class="profit-main">
+        Profit <strong id="weekProfit">₹0</strong>
+      </p>
     </div>
 
+    <!-- MONTH -->
     <div class="card kpi">
       <h3>This Month</h3>
       <p>Orders <strong id="monthOrders">0</strong></p>
-      <p class="profit-main">Profit <strong id="monthProfit">₹0</strong></p>
+      <p class="profit-main">
+        Profit <strong id="monthProfit">₹0</strong>
+      </p>
     </div>
 
+    <!-- YEAR -->
     <div class="card kpi">
       <h3>This Year</h3>
       <p>Orders <strong id="yearOrders">0</strong></p>
-      <p class="profit-main">Profit <strong id="yearProfit">₹0</strong></p>
+      <p class="profit-main">
+        Profit <strong id="yearProfit">₹0</strong>
+      </p>
     </div>
 
   </div>
 
-  <!-- <div class="card">
-    <h3>Revenue & Profit Trend</h3>
-    <canvas id="chart" width="900" height="300"></canvas>
-  </div> -->
-
+  <!-- ALERTS -->
   <div class="card">
     <h3>Alerts & Insights</h3>
     <ul id="alertsList" class="alerts"></ul>
@@ -68,9 +83,11 @@
 
 </div>
 
+<!-- ================= SCRIPTS ================= -->
+<script src="js/navbar.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/aiAdvisor.js"></script>
-<!-- <script src="js/dashboardChart.js"></script> -->
 <script src="js/dashboard.js"></script>
+
 </body>
 </html>
