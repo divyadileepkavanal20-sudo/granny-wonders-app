@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Orders | Granny Wonders</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="nav">
+   <a href="dashboard.html">Dashboard</a>
+  <a href="products-list.html">Products</a>
+  <a class="active" href="#">Orders</a>
+  <a href="product-create.html">Create Products</a>
+  <a href="orders-history.html">Orders History</a>
+  <a href="reports.html">Reports</a>
+  <a href="employees.html">Employees</a>
+  <a href="owner-profit.html">Business Profit</a>
+  <a href="expenses.html">Expenses</a>
+   <a href="how-to-use.html">How To Use</a>
+  <a href="orders-history.html">Orders History</a>
+</nav>
+
+<div class="container">
+
+  <h2>Create Order</h2>
+
+  <!-- ================= ORDER INPUTS ================= -->
+  <div class="card">
+
+    <label>Order Date</label>
+    <input id="orderDate" type="date">
+
+    <label>Product</label>
+    <select id="productSelect"></select>
+
+    <label>Bottle Size</label>
+    <select id="sizeSelect"></select>
+
+    <label>Quantity</label>
+    <input id="quantity" type="number" min="1">
+
+    <hr>
+
+    <label>Delivery Method</label>
+    <select id="deliveryMethod">
+      <option value="self">Self Delivery</option>
+      <option value="courier">Courier</option>
+      <option value="pickup">Customer Pickup</option>
+    </select>
+
+    <!-- SELF DELIVERY -->
+    <div id="selfDelivery">
+      <label>Distance (km)</label>
+      <input id="deliveryDistance" type="number">
+
+      <label>Mileage (km/l)</label>
+      <input id="deliveryMileage" type="number">
+
+      <label>Fuel Price (₹/l)</label>
+      <input id="deliveryFuelPrice" type="number">
+    </div>
+
+    <!-- COURIER -->
+    <div id="courierDelivery" style="display:none;">
+      <label>Courier Charge (₹)</label>
+      <input id="courierCharge" type="number">
+    </div>
+
+    <!-- PICKUP -->
+    <div id="pickupDelivery" style="display:none;">
+      <p class="small">Customer will pick up the order. No delivery cost.</p>
+    </div>
+
+  </div>
+
+  <!-- ================= ORDER SUMMARY ================= -->
+  <div class="card">
+    <h3>Order Summary</h3>
+
+    <p>Order Date: <strong id="summaryDate"></strong></p>
+    <p>Revenue: <strong id="revenue">₹0</strong></p>
+    <p>Cost: <strong id="cost">₹0</strong></p>
+    <p>Delivery Cost: <strong id="deliveryCost">₹0</strong></p>
+    <p>Net Profit: <strong id="profit">₹0</strong></p>
+
+    <p id="orderStatus" class="small"></p>
+  </div>
+
+  <!-- ================= ACTION BAR ================= -->
+  <div class="action-bar">
+    <button class="primary" id="saveOrderBtn" disabled>
+      Save Order
+    </button>
+  </div>
+
+</div>
+
+<script src="js/orders.js"></script>
+</body>
+</html>

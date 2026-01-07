@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Owner Profit | Granny Wonders</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a class="active" href="#">Business Profit</a>
+  <a href="employees.html">Employees</a>
+  <a href="product-create.html">Create Products</a>
+  <a href="products-list.html">Products</a>
+  <a href="orders.html">Orders</a>
+  <a href="orders-history.html">Orders History</a>
+  <a href="reports.html">Reports</a>
+  <a href="expenses.html">Expenses</a>
+   <a href="how-to-use.html">How To Use</a>
+</nav>
+
+<div class="container">
+
+  <h2>Owner Profit Withdrawal</h2>
+
+  <div class="card">
+    <p>Total Profit Earned: <strong id="totalProfit">₹0</strong></p>
+    <p>Already Withdrawn: <strong id="withdrawn">₹0</strong></p>
+    <p>Pending Employee Payments: <strong id="pendingPayments">₹0</strong></p>
+    <hr>
+    <p>Safe Withdrawable Amount: <strong id="safeAmount">₹0</strong></p>
+  </div>
+
+  <div class="card">
+    <label>Withdraw Amount (₹)</label>
+    <input id="withdrawAmount" type="number">
+
+    <button class="primary" onclick="withdrawProfit()">
+      Withdraw Profit
+    </button>
+
+    <p id="withdrawStatus" class="small"></p>
+  </div>
+
+</div>
+
+<script src="js/ownerProfit.js"></script>
+</body>
+</html>

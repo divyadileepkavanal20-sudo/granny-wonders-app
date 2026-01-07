@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order History | Granny Wonders</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="products-list.html">Products</a>
+  <a href="orders.html">Orders</a>
+  <a href="product-create.html">Create Products</a>
+  <a href="reports.html">Reports</a>
+  <a href="employees.html">Employees</a>
+  <a href="owner-profit.html">Business Profit</a>
+  <a href="expenses.html">Expenses</a>
+   <a href="how-to-use.html">How To Use</a>
+  <a class="active" href="#">Order History</a>
+</nav>
+
+<div class="container">
+  <h2>Order History</h2>
+
+  <div class="card">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Product</th>
+          <th>Size</th>
+          <th>Qty</th>
+          <th>Delivery</th>
+          <th>Revenue</th>
+          <th>Profit</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="ordersTable"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="modal" style="display:none;">
+  <div class="modal-card">
+    <h3>Edit Order</h3>
+
+    <label>Quantity</label>
+    <input id="editQty" type="number" min="1">
+
+    <label>Delivery Cost (₹)</label>
+    <input id="editDelivery" type="number" min="0">
+
+    <div class="action-bar">
+      <button class="primary" onclick="saveEdit()">Save</button>
+      <button class="secondary" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/ordersHistory.js"></script>
+</body>
+</html>

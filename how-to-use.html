@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How to Use | Granny Wonders</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="products-list.html">Products</a>
+  <a href="orders.html">Orders</a>
+  <a href="orders-history.html">Orders History</a>
+  <a href="reports.html">Reports</a>
+  <a class="active" href="#">How to Use</a>
+</nav>
+
+<div class="container">
+
+  <div class="dashboard-header">
+    <h1>How to Use Granny Wonders App</h1>
+    <p>Simple explanation of each page, calculations & decisions</p>
+  </div>
+
+  <!-- ================= OVERVIEW ================= -->
+  <div class="card">
+    <h3>Purpose of This App</h3>
+    <p class="small">
+      This app helps you <strong>price products correctly</strong>,
+      <strong>track profit & loss</strong>,
+      <strong>avoid losses</strong>,
+      and <strong>decide how much profit you can safely take</strong>.
+    </p>
+  </div>
+
+  <!-- ================= PRODUCTS ================= -->
+  <div class="card">
+    <h3>1️⃣ Products & Pricing</h3>
+    <p class="small">
+      Use this page when you make a new batch (example: Mango Pickle).
+    </p>
+
+    <ul class="small">
+      <li>Add all batch costs:
+        <ul>
+          <li>Ingredients</li>
+          <li>Gas / Electricity</li>
+          <li>Manual effort (labour)</li>
+          <li>Packaging</li>
+          <li>Fuel used for buying ingredients</li>
+        </ul>
+      </li>
+      <li>Enter total batch output in grams</li>
+      <li>App calculates:
+        <ul>
+          <li>Cost per gram</li>
+          <li>Cost per bottle</li>
+          <li>Suggested selling price</li>
+        </ul>
+      </li>
+      <li>Pricing suggestions warn if price is too high</li>
+    </ul>
+
+    <p class="small"><strong>Formula:</strong></p>
+    <p class="small">
+      Cost per gram = Total Batch Cost ÷ Total Batch Weight
+    </p>
+  </div>
+
+  <!-- ================= ORDERS ================= -->
+  <div class="card">
+    <h3>2️⃣ Orders</h3>
+    <p class="small">
+      Use this page whenever a customer places an order.
+    </p>
+
+    <ul class="small">
+      <li>Select product & bottle size</li>
+      <li>Enter quantity</li>
+      <li>Select delivery method:
+        <ul>
+          <li><strong>Self delivery</strong> → fuel cost is your expense</li>
+          <li><strong>Courier</strong> → courier charge is added to customer bill</li>
+          <li><strong>Pickup</strong> → no delivery cost</li>
+        </ul>
+      </li>
+      <li>App calculates:
+        <ul>
+          <li>Revenue</li>
+          <li>Product cost</li>
+          <li>Delivery cost</li>
+          <li>Net profit</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p class="small"><strong>Profit Formula:</strong></p>
+    <p class="small">
+      Profit = Revenue − Product Cost − Delivery Cost
+    </p>
+  </div>
+
+  <!-- ================= ORDER HISTORY ================= -->
+  <div class="card">
+    <h3>3️⃣ Order History</h3>
+    <p class="small">
+      View all past orders here.
+    </p>
+
+    <ul class="small">
+      <li>Edit quantity or delivery cost if mistake was made</li>
+      <li>Delete wrong or test orders</li>
+      <li>All reports update automatically after edits</li>
+    </ul>
+  </div>
+
+  <!-- ================= DASHBOARD ================= -->
+  <div class="card">
+    <h3>4️⃣ Dashboard</h3>
+    <p class="small">
+      This is your <strong>business health screen</strong>.
+    </p>
+
+    <ul class="small">
+      <li>Today / Week / Month / Year profit</li>
+      <li>Revenue & profit trend graph</li>
+      <li>Alerts:
+        <ul>
+          <li>Loss-making orders</li>
+          <li>Low-margin warnings</li>
+          <li>Healthy business confirmation</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ================= REPORTS ================= -->
+  <div class="card">
+    <h3>5️⃣ Reports (P&L)</h3>
+    <p class="small">
+      This page shows your <strong>Profit & Loss statement</strong>.
+    </p>
+
+    <ul class="small">
+      <li>Daily / Weekly / Monthly / Yearly profit</li>
+      <li>Revenue vs profit comparison</li>
+      <li>Used for tax, planning & growth decisions</li>
+    </ul>
+  </div>
+
+  <!-- ================= OWNER PROFIT ================= -->
+  <div class="card">
+    <h3>6️⃣ Owner Profit Withdrawal</h3>
+    <p class="small">
+      This page prevents you from taking too much money and hurting the business.
+    </p>
+
+    <ul class="small">
+      <li>Total profit earned from orders</li>
+      <li>Already withdrawn amount</li>
+      <li>Pending employee payments</li>
+      <li>Safety buffer (10%)</li>
+    </ul>
+
+    <p class="small"><strong>Safe Withdrawal Formula:</strong></p>
+    <p class="small">
+      Safe Amount = Total Profit − Withdrawn − Pending Payments − Safety Buffer
+    </p>
+  </div>
+
+  <!-- ================= EMPLOYEES ================= -->
+  <div class="card">
+    <h3>7️⃣ Employee Payments</h3>
+    <p class="small">
+      Track how much you owe workers.
+    </p>
+
+    <ul class="small">
+      <li>Payment calculated from manual effort cost</li>
+      <li>Monthly payable shown</li>
+      <li>Mark payment as paid after settlement</li>
+    </ul>
+  </div>
+
+  <!-- ================= DATA ================= -->
+  <div class="card">
+    <h3>📦 Data Storage</h3>
+    <p class="small">
+      All data is stored safely in your browser (local storage).
+    </p>
+
+    <ul class="small">
+      <li>Data stays after refresh</li>
+      <li>Data stays after system restart</li>
+      <li>Data may be lost if browser data is cleared</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

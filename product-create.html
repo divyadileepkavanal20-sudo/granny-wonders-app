@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Product | Granny Wonders</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="nav">
+   <a href="dashboard.html">Dashboard</a>
+  <a class="active" href="#">Add Product</a>
+  <a href="products-list.html">Products</a>
+  <a href="orders.html">Orders</a>
+  <a href="orders-history.html">Orders History</a>
+  <a href="reports.html">Reports</a>
+  <a href="employees.html">Employees</a>
+  <a href="owner-profit.html">Business Profit</a>
+  <a href="expenses.html">Expenses</a>
+   <a href="how-to-use.html">How To Use</a>
+</nav>
+
+<div class="container">
+
+  <h2>Add Product Pricing</h2>
+
+  <!-- PRODUCT NAME -->
+  <div class="card">
+    <label>Product Name</label>
+    <input id="productName" placeholder="Eg: Mango Pickle">
+  </div>
+
+  <!-- BATCH COSTS -->
+  <div class="card">
+    <h3>Batch Costs</h3>
+
+    <label>Ingredients Cost (₹)</label>
+    <input id="ingredient" type="number">
+
+    <label>Gas / Electricity Cost (₹)</label>
+    <input id="gas" type="number">
+
+    <label>Manual Effort Cost (₹)</label>
+    <input id="labour" type="number">
+
+    <label>Packaging Cost (₹)</label>
+    <input id="packaging" type="number">
+
+    <label>Other Expenses (₹)</label>
+    <input id="other" type="number">
+
+    <hr>
+
+    <h4>Fuel Cost (Buying Ingredients)</h4>
+
+    <label>Distance Travelled (km)</label>
+    <input id="distance" type="number">
+
+    <label>Vehicle Mileage (km/l)</label>
+    <input id="mileage" type="number">
+
+    <label>Fuel Price (₹/l)</label>
+    <input id="fuelPrice" type="number">
+
+    <p class="small">
+      Fuel Cost: <strong id="fuelCostEl">₹0</strong>
+    </p>
+
+    <hr>
+
+    <label>Total Batch Output (grams)</label>
+    <input id="batchWeight" type="number">
+
+    <p class="small">
+      Total Batch Cost: <strong id="totalBatchCostEl">₹0</strong>
+    </p>
+  </div>
+
+  <!-- BOTTLES -->
+  <div class="card">
+    <h3>Bottle Pricing</h3>
+
+    <table class="table">
+      <tr>
+        <th>Size</th>
+        <th>Count</th>
+        <th>Cost / Bottle</th>
+        <th>Selling Price</th>
+        <th>Margin</th>
+      </tr>
+
+      <tr data-size="100">
+        <td>100 g</td>
+        <td><input class="count"></td>
+        <td class="cost"></td>
+        <td class="price"></td>
+        <td class="status"></td>
+      </tr>
+
+      <tr data-size="250">
+        <td>250 g</td>
+        <td><input class="count"></td>
+        <td class="cost"></td>
+        <td class="price"></td>
+        <td class="status"></td>
+      </tr>
+
+      <tr data-size="500">
+        <td>500 g</td>
+        <td><input class="count"></td>
+        <td class="cost"></td>
+        <td class="price"></td>
+        <td class="status"></td>
+      </tr>
+
+      <tr data-size="1000">
+        <td>1 kg</td>
+        <td><input class="count"></td>
+        <td class="cost"></td>
+        <td class="price"></td>
+        <td class="status"></td>
+      </tr>
+    </table>
+  </div>
+
+<div class="card">
+  <h3>Pricing Suggestions</h3>
+  <ul id="pricingSuggestions" class="small"></ul>
+</div>
+
+  <button id="saveBtn" class="primary" onclick="saveProduct()">
+    Save Product
+  </button>
+
+</div>
+
+<script src="js/productCreate.js"></script>
+</body>
+</html>

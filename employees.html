@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employees | Granny Wonders</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a class="active" href="#">Employees</a>
+  <a href="product-create.html">Create Products</a>
+  <a href="products-list.html">Products</a>
+  <a href="orders.html">Orders</a>
+  <a href="orders-history.html">Orders History</a>
+  <a href="reports.html">Reports</a>
+  <a href="owner-profit.html">Business Profit</a>
+  <a href="expenses.html">Expenses</a>
+   <a href="how-to-use.html">How To Use</a>
+</nav>
+
+<div class="container">
+
+  <div class="dashboard-header">
+    <h1>Employee Payments</h1>
+    <p>Monthly payment tracking</p>
+  </div>
+
+  <!-- ADD EMPLOYEE -->
+  <div class="card">
+    <label>Employee Name</label>
+    <input id="empName" placeholder="Eg: Lakshmi">
+
+    <button class="primary" onclick="addEmployee()">Add Employee</button>
+  </div>
+
+  <!-- EMPLOYEE TABLE -->
+  <div class="card">
+    <h3>Employees – Current Month</h3>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Month</th>
+          <th>Orders Handled</th>
+          <th>Payable (₹)</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="empTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="js/employees.js"></script>
+</body>
+</html>

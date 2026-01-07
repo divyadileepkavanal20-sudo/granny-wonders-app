@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expenses | Granny Wonders</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a class="active" href="#">Expenses</a>
+  <a href="product-create.html">Create Products</a>
+  <a href="products-list.html">Products</a>
+  <a href="orders.html">Orders</a>
+  <a href="orders-history.html">Orders History</a>
+  <a href="reports.html">Reports</a>
+  <a href="employees.html">Employees</a>
+  <a href="owner-profit.html">Business Profit</a>
+   <a href="how-to-use.html">How To Use</a>
+</nav>
+
+<div class="container">
+
+  <div class="dashboard-header">
+    <h1>Expense Tracking</h1>
+    <p>Track business expenses</p>
+  </div>
+
+  <div class="card">
+    <label>Expense Name</label>
+    <input id="expenseName">
+
+    <label>Amount (₹)</label>
+    <input id="expenseAmount" type="number">
+
+    <label>Type</label>
+    <select id="expenseType">
+      <option value="fixed">Fixed</option>
+      <option value="variable">Variable</option>
+    </select>
+
+    <button class="primary" onclick="addExpense()">Add Expense</button>
+  </div>
+
+  <div class="card">
+    <h3>This Month Expenses</h3>
+    <p>Total: <strong id="totalExpenses">₹0</strong></p>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody id="expenseTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="js/expenses.js"></script>
+</body>
+</html>

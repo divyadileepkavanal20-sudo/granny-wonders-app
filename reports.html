@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Monthly P&L | Granny Wonders</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a class="active" href="#">Reports</a>
+  <a href="product-create.html">Create Products</a>
+  <a href="products-list.html">Products</a>
+  <a href="orders.html">Orders</a>
+  <a href="orders-history.html">Orders History</a>
+  <a href="employees.html">Employees</a>
+  <a href="owner-profit.html">Business Profit</a>
+  <a href="expenses.html">Expenses</a>
+   <a href="how-to-use.html">How To Use</a>
+</nav>
+
+<div class="container">
+
+  <h2>Monthly Profit & Loss</h2>
+
+  <div class="card">
+    <label>Select Month</label>
+    <input id="monthSelect" type="month">
+  </div>
+
+  <div class="card">
+    <table class="table">
+      <tbody>
+        <tr><td>Total Revenue</td><td id="rev">₹0</td></tr>
+        <tr><td>Product Cost</td><td id="cost">₹0</td></tr>
+        <tr><td>Delivery Cost</td><td id="delivery">₹0</td></tr>
+        <tr><td>Expenses</td><td id="exp">₹0</td></tr>
+        <tr><td>Employee Payments</td><td id="salary">₹0</td></tr>
+        <tr>
+          <th>Net Profit</th>
+          <th id="net">₹0</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+  <h3>AI Business Insights</h3>
+  <ul id="aiInsights" class="alerts"></ul>
+</div>
+</div>
+
+<script src="js/reports.js"></script>
+</body>
+</html>
