@@ -253,3 +253,126 @@ body.manual-mode .manual-only {
 .modal.hidden {
   display: none;
 }
+
+/* ================= BEAUTIFUL LOGIN PAGE ================= */
+
+/* Login page background */
+.login-shell {
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at top,
+    #ffffff 0%,
+    #eef2f3 40%,
+    #e5ece8 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* Login container */
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* Brand section */
+.login-brand {
+  text-align: center;
+}
+
+.login-brand h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  color: var(--primary);
+}
+
+.login-brand p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Login card */
+.login-box {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 28px;
+  border: 1px solid var(--border);
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.08),
+    0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* Title */
+.login-box h2 {
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Input groups */
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+.input-group input {
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* Input focus */
+.input-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
+  outline: none;
+}
+
+/* Login button */
+.login-btn {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 14px;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(46,125,50,0.25);
+}
+
+/* Footer note */
+.login-note {
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Mobile polish */
+@media (max-width: 480px) {
+  .login-brand h1 {
+    font-size: 28px;
+  }
+
+  .login-box {
+    padding: 26px 22px;
+    border-radius: 18px;
+  }
+}
